@@ -12,7 +12,7 @@ source:
     modules:
         -
             module: kb.panel.sample
-            file: sample
+            file: panel
         -
             module: kb.widget.sample.factory
             file: "widgets/factory-widget"
