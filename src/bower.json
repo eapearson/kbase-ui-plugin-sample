@@ -6,7 +6,7 @@
     "Erik Pearson <eapearson@lbl.gov>"
   ],
   "description": "KBase UI Sample Plugin",
-  "main": "sample/config.yml",
+  "main": "main.js",
   "moduleType": [
     "amd"
   ],
