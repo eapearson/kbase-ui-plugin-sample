@@ -11,16 +11,16 @@
 /* DOC: sample pure object widget with interface
  */
 define([
-    'q',    
+    'bluebird',    
     'kb.dom'
 ],
-    function (q, DOM) {
+    function (Promise, DOM) {
         "use strict";
         return Object.create({}, {
            
             init: {
                 value: function (cfg) {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         resolve();
                     }.bind(this));
                 }
@@ -28,7 +28,7 @@ define([
             
             attach: {
                 value: function (node) {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         this.mount = node;
                         this.container = DOM.createElement('div');
                         DOM.append(this.mount, this.container);
@@ -39,7 +39,7 @@ define([
             
             start: {
                 value: function (params) {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         DOM.setHTML(this.container, 'Hello, I am an object widget which implements the widget interface.');
                         resolve();
                     }.bind(this));
@@ -48,7 +48,7 @@ define([
             
             run: {
                 value: function (params) {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         resolve();
                     }.bind(this));
                 }
@@ -57,7 +57,7 @@ define([
             
             stop: {
                 value: function () {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         resolve();
                     }.bind(this));
                 }
@@ -65,7 +65,7 @@ define([
             
             detach: {
                 value: function () {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         resolve();
                     }.bind(this));
                 }
@@ -73,7 +73,7 @@ define([
             
             destroy: {
                 value: function () {
-                    return q.Promise(function (resolve) {
+                    return new Promise(function (resolve) {
                         resolve();
                     }.bind(this));
                 }

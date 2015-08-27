@@ -24,10 +24,9 @@
  * 
  */
 define([
-    'q',    
     'kb.runtime'
 ],
-    function (Q, R) {
+    function ( R) {
         "use strict";
         var widget = Object.create({}, {
            

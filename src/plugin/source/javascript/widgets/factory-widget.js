@@ -53,9 +53,9 @@
  * 
  */
 define([   
-    'q', 'kb.dom'
+    'bluebird', 'kb.dom'
 ],
-    function (q, DOM) {
+    function (Promise, DOM) {
         /* DOC: strict mode please 
          * To facility robust and clean code, we use strict mode. It should be 
          * placed at the top of the module function.
@@ -91,7 +91,7 @@ define([
              * event may serve different purposes in different use cases.
              */
             function init(config) {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     resolve();
                 });
             }
@@ -111,7 +111,7 @@ define([
              * Other use cases may attach event listeners here as well.
              */
             function attach(node) {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     /* DOC: save parent node reference
                      * We save a reference to the parent node, since later stages
                      * of the widget lifecycle require us to clean up after
@@ -155,7 +155,7 @@ define([
              * 
              */
             function start(params) {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     
                     /* DOC: rendering
                      * Here we have a simple rendering implementation!
@@ -179,7 +179,7 @@ define([
              * performance degradation. This 
              */
             function run(params) {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     DOM.setHTML(container, 'Hi, it is now ' + (new Date()));
                     resolve();
                 });
@@ -201,7 +201,7 @@ define([
              * 
              */
             function stop() {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     resolve();
                 });
             }
@@ -215,7 +215,7 @@ define([
              * attached. 
              */
             function detach() {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     DOM.remove(mount, container);
                     resolve();
                 });
@@ -236,7 +236,7 @@ define([
              * In practice, the stop and detach events capture most of this.
              */
             function destroy() {
-                return q.Promise(function (resolve) {
+                return new Promise(function (resolve) {
                     resolve();
                 });
             }

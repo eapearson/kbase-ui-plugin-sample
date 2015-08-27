@@ -41,7 +41,7 @@
  * 
  */
 define([
-    'q',
+    'bluebird',
     'jquery',
     'kb.html',
     'kb.runtime',
@@ -50,7 +50,7 @@ define([
     'kb.widget.widgetadapter',
     'kb.widget.sample.object-interface'
 ],
-    function (q, $, html, R, sampleWidgetFactory, kbWidgetAdapterFactory, widgetAdapterFactory, sampleObjectInterfaceWidget) {
+    function (Promise, $, html, R, sampleWidgetFactory, kbWidgetAdapterFactory, widgetAdapterFactory, sampleObjectInterfaceWidget) {
         /* DOC: strict mode
          * We always set strict mode with the following magic javascript
          * incantation.
@@ -224,8 +224,8 @@ define([
                  * 
                  */
                 function init(config) {
-                    return q.Promise(function (resolve, reject) {
-                        q.all(rendered.widgets.map(function (w) {
+                    return new Promise(function (resolve, reject) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             return w.widget.init(w.config);
                         }))
                             .then(function () {
@@ -254,7 +254,7 @@ define([
                  * 
                  */
                 function attach(node) {
-                    return q.Promise(function (resolve, reject) {
+                    return new Promise(function (resolve, reject) {
                         /* DOC: creating our attachment point
                          *  Here we save the provided node in the mount variable,
                          *  and attach our own container node to it. This pattern
@@ -288,7 +288,7 @@ define([
                          * Okay, here we run all of the widgets through the 
                          * 
                          */
-                        q.all(rendered.widgets.map(function (w) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             return w.widget.attach($('#' + w.id).get(0));
                         }))
                             .then(function (results) {
@@ -302,8 +302,8 @@ define([
                     });
                 }
                 function start(params) {
-                    return q.Promise(function (resolve) {
-                        q.all(rendered.widgets.map(function (w) {
+                    return Promise(function (resolve) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             return w.widget.start(params);
                         }))
                             .then(function (results) {
@@ -316,13 +316,13 @@ define([
                     });
                 }
                 function run(params) {
-                     return q.Promise(function (resolve) {
+                     return Promise(function (resolve) {
                         resolve();
                     });
                 }
                 function stop() {
-                    return q.Promise(function (resolve) {
-                        q.all(rendered.widgets.map(function (w) {
+                    return Promise(function (resolve) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             return w.widget.stop();
                         }))
                             .then(function (results) {
@@ -335,8 +335,8 @@ define([
                     });
                 }
                 function detach() {
-                    return q.Promise(function (resolve) {
-                        q.all(rendered.widgets.map(function (w) {
+                    return Promise(function (resolve) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             return w.widget.detach();
                         }))
                             .then(function (results) {
@@ -349,8 +349,8 @@ define([
                     });
                 }
                 function destroy() {
-                    return q.Promise(function (resolve) {
-                        q.all(rendered.widgets.map(function (w) {
+                    return Promise(function (resolve) {
+                        Promise.all(rendered.widgets.map(function (w) {
                             if (w.widget.destroy) {
                                 return w.widget.destroy();
                             }
