@@ -1,13 +1,13 @@
 ## YAML Template.
 ---
 package:
-    author: Erik Pearson
-    name: sample panel and widget package
-    description: A packge containing the sample panel and associated widgets
+    author: You Yourself
+    name: A sample panel and widget plugin
+    description: A plugin containing a sample panel and associated widgets
     date: August 3, 2015
-    version: 0.0.1
+    version: 0.1.0
 source:
-    ## sources are relative to build/plugins/PACKAGE/source/javascript
+    ## sources are relative to build/plugins/PLUGIN/modules
     ## NB: need to quote file names, otherwise 
     modules:
         -
@@ -32,6 +32,14 @@ source:
         -
             file: styles.css
 install:
+    widgets:
+        -
+            id:
+            module:
+        -
+            id:
+            module:
+        
     routes:
         -
             path: ['sample']

@@ -1,3 +1,5 @@
 # KBase UI Plugin - Sample Plugin
 
-This is a sample plugin for the KBase UI.
+This repo contains a sample plugin for the KBase UI.
+
+Please consult [docs/quickstart.md]().

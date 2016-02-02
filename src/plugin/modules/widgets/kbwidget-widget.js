@@ -34,9 +34,8 @@
  * TODO: they provide to the sub-widget.
  */
 define([
-    'jquery',
-    
-    'kb.jquery.authenticatedwidget'
+    'jquery',    
+    'kb/widget/legacy/authenticatedwidget'
 ],
     function ($) {
         /* DOC: strict mode

@@ -12,12 +12,12 @@
  */
 define([
     'bluebird',    
-    'kb.dom'
+    'kb/common/dom'
 ],
     function (Promise, DOM) {
         "use strict";
         return Object.create({}, {
-           
+            
             init: {
                 value: function (cfg) {
                     return new Promise(function (resolve) {
